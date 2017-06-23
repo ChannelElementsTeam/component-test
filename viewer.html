@@ -1,0 +1,53 @@
+<dom-module id="traffic-lightz-view">
+  <template>
+    <style>
+       :host {
+        white-space: nowrap;
+      }
+
+      .light {
+        display: inline-block;
+        height: 26px;
+        width: 26px;
+        border-radius: 20px;
+        border: 1px solid #e5e5e5;
+        margin: 0 10px;
+        opacity: 0.4;
+        transition: opacity 0.3s ease;
+      }
+
+      #red {
+        background: #F44336;
+      }
+
+      #green {
+        background: #4CAF50;
+      }
+
+      #yellow {
+        background: #FFC107;
+      }
+    </style>
+    <div>
+      <div id="red" class="light"></div>
+      <div id="yellow" class="light"></div>
+      <div id="green" class="light"></div>
+    </div>
+  </template>
+  <script>
+    class TrafficLightzView extends Polymer.Element {
+      static get is() { return 'traffic-lightz-view'; }
+      static get properties() {
+        return {
+          data: {
+            type: Object,
+            observer: 'refresh'
+          }
+        };
+      }
+      refresh() {
+      }
+    }
+    window.customElements.define(TrafficLightzView.is, TrafficLightzView);
+  </script>
+</dom-module>

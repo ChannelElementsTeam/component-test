@@ -1,0 +1,21 @@
+{
+  "name": "traffic-lightz",
+  "homepage": "https://github.com/ChannelElementsTeam/component-test",
+  "authors": [
+    "Hivepoint, Inc."
+  ],
+  "description": "A test component that updates the color live",
+  "main": "component-test.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "polymer": "^2.0.1"
+  }
+}
