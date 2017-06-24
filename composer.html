@@ -55,6 +55,7 @@
         font-size: 20px;
         min-width: 60px;
         text-align: center;
+        outline: none;
       }
 
       button:disabled {
@@ -113,7 +114,7 @@
         this.onSend("green");
       }
 
-      onSend() {
+      onSend(color) {
         this.channel.sendCard(this, { json: { color: color } }, true, false).then(() => {
           //noop
         }).catch((err) => {

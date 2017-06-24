@@ -12,8 +12,9 @@
         border-radius: 20px;
         border: 1px solid #e5e5e5;
         margin: 0 10px;
-        opacity: 0.4;
-        transition: opacity 0.3s ease;
+        opacity: 0.2;
+        transition: all 0.3s ease;
+        cursor: pointer;
       }
 
       #red {
@@ -29,9 +30,9 @@
       }
     </style>
     <div>
-      <div id="red" class="light"></div>
-      <div id="yellow" class="light"></div>
-      <div id="green" class="light"></div>
+      <div id="red" class="light" on-click="onR"></div>
+      <div id="yellow" class="light" on-click="onY"></div>
+      <div id="green" class="light" on-click="onG"></div>
     </div>
   </template>
   <script>
@@ -42,10 +43,41 @@
           data: {
             type: Object,
             observer: 'refresh'
-          }
+          },
+          channel: Object
         };
       }
+
       refresh() {
+        this.$.red.style.opacity = 0.2;
+        this.$.yellow.style.opacity = 0.2;
+        this.$.green.style.opacity = 0.2;
+        this.$.red.style.transform = "none";
+        this.$.yellow.style.transform = "none";
+        this.$.green.style.transform = "none";
+        this.$[this.data.color].style.opacity = 1;
+        this.$[this.data.color].style.transform = "scale(1.3)";
+      }
+
+      onR() {
+        this.onColor("red");
+      }
+
+      onY() {
+        this.onColor("yellow");
+      }
+
+      onG() {
+        this.onColor("green");
+      }
+
+      onColor(color) {
+        this.set("data", { color: color });
+        this.channel.sendCardToCardMessage(this, { json: { color: color } }, false, false);
+      }
+
+      handleCardToCardMessageReceived(participane, message) {
+        this.set("data", message.json.details.data);
       }
     }
     window.customElements.define(TrafficLightzView.is, TrafficLightzView);
