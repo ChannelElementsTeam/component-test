@@ -76,7 +76,7 @@
         this.channel.sendCardToCardMessage(this, { json: { color: color } }, false, false);
       }
 
-      handleCardToCardMessageReceived(participane, message) {
+      handleCardToCardMessageReceived(participant, message) {
         this.set("data", message.json.details.data);
       }
     }
