@@ -41,13 +41,11 @@
       static get is() { return 'traffic-lightz-view'; }
       static get properties() {
         return {
-          data: {
-            type: Object,
-            observer: 'refresh'
-          },
+          data: Object,
           channel: Object
         };
       }
+      static get observers() { return ['refresh(data.*)'] }
 
       constructor() {
         super();
