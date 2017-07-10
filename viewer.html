@@ -76,9 +76,9 @@
       }
       onColor(color) {
         this.stateController.updateProperty('color', color);
-        // this.set("data", { color: color });
-        // this.channel.sendCardToCardMessage(this, { json: { color: color } }, false, false);
       }
+
+      // Following is boilerplate for distributed-state-controller
       handleCardToCardMessageReceived(participant, message) {
         switch (message.json.type) {
           case 'mutation':
