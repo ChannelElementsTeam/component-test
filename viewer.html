@@ -1,3 +1,4 @@
+<link rel="import" href="../distributed-state-controller/distributed-state-controller.html">
 <dom-module id="traffic-lightz-view">
   <template>
     <style>
@@ -35,7 +36,6 @@
       <div id="green" class="light" on-click="onG"></div>
     </div>
   </template>
-  <script src="../distributed-state-controller/bin/src/index.js"></script>
   <script>
     class TrafficLightzView extends Polymer.Element {
       static get is() { return 'traffic-lightz-view'; }
@@ -50,6 +50,7 @@
       }
 
       constructor() {
+        super();
         this.stateController = new DistributedStateController();
       }
       connectedCallback() {
